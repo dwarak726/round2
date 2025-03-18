@@ -1,0 +1,71 @@
+/* General styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: white;
+}
+
+/* Increased leaderboard width */
+.leaderboard-container {
+    max-width: 500px; 
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+/* Search bar */
+#searchBar {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Search bar placeholder color */
+#searchBar::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+th {
+    font-size: 18px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Rank styles */
+.gold { color: gold; text-shadow: 0 0 10px gold; }
+.silver { color: silver; text-shadow: 0 0 10px silver; }
+.bronze { color: #cd7f32; text-shadow: 0 0 10px #cd7f32; }
+.normal { color: #00ffcc; text-shadow: 0 0 10px #00ffcc; }

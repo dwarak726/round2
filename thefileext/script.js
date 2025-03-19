@@ -26,10 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Fetch and update leaderboard
     onValue(leaderboardRef, (snapshot) => {
-        leaderboardData = Object.entries(snapshot.val())
-            .sort((a, b) => b[1] - a[1]) // Sort in descending order by score
-            .map(([name, score], index) => ({ rank: index + 1, name, score })); // Add actual rank
-
+        const rawData = Object.entries(snapshot.val() || {});
+        leaderboardData = calculateRanks(rawData);
         renderLeaderboard(leaderboardData);
     });
 
@@ -37,11 +35,29 @@ document.addEventListener("DOMContentLoaded", () => {
     searchBar.addEventListener("input", (e) => {
         const searchTerm = e.target.value.toLowerCase();
         const filteredData = leaderboardData.filter(({ name }) => name.toLowerCase().includes(searchTerm));
-        renderLeaderboard(filteredData, true); // Pass flag to indicate it's a search
+        renderLeaderboard(filteredData);
     });
 
-    function renderLeaderboard(data, isSearch = false) {
-        leaderboardTable.innerHTML = "";
+    function calculateRanks(rawData) {
+        rawData.sort((a, b) => b[1] - a[1]); // Sort by descending score
+
+        let rankedData = [];
+        let rank = 1, prevScore = null, actualRank = 0;
+
+        rawData.forEach(([name, score], index) => {
+            if (score !== prevScore) {
+                actualRank = rank; // Assign new rank when score changes
+            }
+            rankedData.push({ rank: actualRank, name, score });
+            prevScore = score;
+            rank++; // Always increment to ensure no skipped ranks
+        });
+
+        return rankedData;
+    }
+
+    function renderLeaderboard(data) {
+        leaderboardTable.innerHTML = ""; // Clear previous rows
 
         data.forEach(({ rank, name, score }) => {
             const row = document.createElement("tr");

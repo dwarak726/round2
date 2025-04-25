@@ -1,1 +1,1 @@
-This was just a simple chrome extention made for the sole purpose of keeping track of leaderboard in this case hackerrank for a unique kind of evaluation scheme that is not usually provided in hackerrank contest
+*This was just a simple chrome extention made for the sole purpose of keeping track of leaderboard in this case hackerrank for a unique kind of evaluation scheme that is not usually provided in hackerrank contest*
